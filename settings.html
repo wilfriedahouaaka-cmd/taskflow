@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6366f1">
+  <title>Paramètres — Task Flow</title>
+  <meta name="description" content="Modifiez votre profil et gérez vos données Task Flow.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html" aria-label="Task Flow, accueil">
+        <span class="brand-mark" aria-hidden="true">✓</span>
+        <span class="brand-name">Task Flow</span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="tasks.html">Mes tâches</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="account.html">Mon espace</a>
+        <a class="active" href="settings.html">Paramètres</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="themeButton" type="button" aria-label="Changer le thème" title="Changer le thème">◐</button>
+      </div>
+      <button class="mobile-menu-button" id="mobileMenuButton" type="button" aria-label="Ouvrir le menu" aria-controls="mainNav" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="settings-header">
+      <div class="container">
+        <span class="eyebrow">Modification</span>
+        <h1>Modifier votre profil</h1>
+        <p>Corrigez ou mettez à jour vos informations.</p>
+      </div>
+    </section>
+
+    <section class="settings-main">
+      <div class="container settings-layout">
+        <div class="settings-card">
+          <div class="section-heading">
+            <span class="eyebrow">Profil</span>
+            <h2>Vos informations</h2>
+            <p>Les modifications sont enregistrées uniquement dans ce navigateur.</p>
+          </div>
+
+          <form id="profileForm">
+            <div class="form-field">
+              <label for="profileNameInput">Nom ou nom d'affichage</label>
+              <input id="profileNameInput" name="name" type="text" placeholder="Écrire votre nom" required>
+            </div>
+
+            <div class="form-field">
+              <label for="profileEmailInput">Adresse e-mail</label>
+              <input id="profileEmailInput" name="email" type="email" placeholder="vous@exemple.com">
+            </div>
+
+            <div class="form-field">
+              <label for="profileBioInput">Présentation</label>
+              <textarea id="profileBioInput" name="bio" rows="4" placeholder="Écrire une courte présentation"></textarea>
+            </div>
+
+            <div class="form-field">
+              <label for="profilePhotoInput">Photo de profil</label>
+              <label class="file-input-button" for="profilePhotoInput">Choisir une photo</label>
+              <input class="visually-hidden-input" id="profilePhotoInput" name="photo" type="file" accept="image/*">
+              <small class="field-help">La photo est conservée localement dans ce navigateur.</small>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="profileCountryInput">Pays</label>
+                <select id="profileCountryInput" name="country">
+                  <option value="">Choisir un pays</option>
+                  <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+                  <option value="Sénégal">Sénégal</option>
+                  <option value="France">France</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Belgique">Belgique</option>
+                  <option value="Autre pays">Autre pays</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="profileLanguageInput">Langue</label>
+                <select id="profileLanguageInput" name="language">
+                  <option value="">Choisir une langue</option>
+                  <option value="Français">Français</option>
+                  <option value="English">English</option>
+                  <option value="Español">Español</option>
+                  <option value="العربية">العربية</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="profileCurrencyInput">Devise préférée</label>
+              <select id="profileCurrencyInput" name="currency">
+                <option value="">Choisir une devise</option>
+                <option value="Franc CFA — XOF">Franc CFA — XOF</option>
+                <option value="Euro — EUR">Euro — EUR</option>
+                <option value="Dollar américain — USD">Dollar américain — USD</option>
+                <option value="Dollar canadien — CAD">Dollar canadien — CAD</option>
+                <option value="Livre sterling — GBP">Livre sterling — GBP</option>
+              </select>
+            </div>
+
+            <div class="form-actions">
+              <button class="button button-primary" type="submit">Enregistrer les modifications</button>
+              <a class="button button-secondary" href="account.html">Retour à mon espace</a>
+            </div>
+
+            <p class="form-status" id="profileFormStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <aside class="settings-preview-card">
+          <span class="eyebrow">Aperçu</span>
+          <h2>Votre profil</h2>
+          <button class="settings-photo-button" id="settingsPhotoButton" type="button" aria-label="Agrandir l'aperçu du profil">
+            <img class="settings-avatar-image" id="settingsAvatarImage" src="" alt="Photo du profil" hidden>
+            <span class="settings-avatar" id="settingsAvatar" aria-label="Initiales du profil">?</span>
+          </button>
+          <p class="photo-help">Cliquez sur la photo pour l'agrandir.</p>
+          <h3 id="settingsPreviewName">Aucun nom</h3>
+          <p id="settingsPreviewEmail">Aucun e-mail</p>
+          <p id="settingsPreviewBio">Aucune présentation</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="settings-danger-zone">
+      <div class="container">
+        <div class="danger-card">
+          <div>
+            <span class="eyebrow">Gestion des données</span>
+            <h2>Réinitialiser le prototype</h2>
+            <p>Cette action supprime le profil, les tâches, l'historique et le thème local.</p>
+          </div>
+          <button class="button button-danger" id="resetAppButton" type="button">Réinitialiser les données</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="photo-modal" id="photoModal" hidden role="dialog" aria-modal="true" aria-labelledby="photoModalTitle">
+      <div class="photo-modal-backdrop"></div>
+      <div class="photo-modal-content">
+        <button class="photo-modal-close" id="closePhotoModalButton" type="button" aria-label="Fermer la photo">×</button>
+        <h2 id="photoModalTitle">Photo du profil</h2>
+        <img id="photoModalImage" src="" alt="Photo agrandie du profil">
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">✓</span>
+        <div>
+          <strong>Task Flow</strong>
+          <span>Organisez. Progressez. Réalisez.</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Accueil</a>
+        <a href="tasks.html">Mes tâches</a>
+        <a href="account.html">Mon espace</a>
+      </div>
+      <p>Prototype statique — Task Flow</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

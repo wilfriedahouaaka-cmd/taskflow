@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6366f1">
+  <title>Task Flow — Organisez vos tâches simplement</title>
+  <meta name="description" content="Task Flow est une application statique de gestion des tâches.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html" aria-label="Task Flow, accueil">
+        <span class="brand-mark" aria-hidden="true">✓</span>
+        <span class="brand-name">Task Flow</span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Navigation principale">
+        <a class="active" href="index.html">Accueil</a>
+        <a href="tasks.html">Mes tâches</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="account.html">Mon espace</a>
+        <a href="settings.html">Paramètres</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="themeButton" type="button" aria-label="Activer le thème sombre" title="Changer le thème">◐</button>
+        <a class="button button-primary button-small" href="tasks.html">Commencer</a>
+      </div>
+      <button class="mobile-menu-button" id="mobileMenuButton" type="button" aria-label="Ouvrir le menu" aria-controls="mainNav" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="eyebrow">Une organisation plus simple</span>
+          <h1>Transformez vos tâches en progrès visibles.</h1>
+          <p>Task Flow vous aide à organiser vos tâches, définir vos priorités et suivre votre progression dans un espace clair.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="tasks.html">Commencer</a>
+            <a class="button button-secondary" href="#how-it-works">Comment ça marche ?</a>
+          </div>
+          <p class="hero-note">Version statique — vos données resteront dans votre navigateur.</p>
+        </div>
+        <div class="hero-preview" aria-label="Aperçu du tableau de bord Task Flow">
+          <div class="preview-window">
+            <div class="preview-topbar">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="preview-content">
+              <div class="preview-heading">
+                <div>
+                  <small>Progression globale</small>
+                  <strong>Votre espace</strong>
+                </div>
+                <span class="preview-avatar">TF</span>
+              </div>
+              <div class="preview-progress">
+                <div class="preview-progress-header">
+                  <span>Progression</span>
+                  <strong>0%</strong>
+                </div>
+                <div class="progress-track">
+                  <span class="progress-value" style="width: 0%;"></span>
+                </div>
+              </div>
+              <div class="preview-cards">
+                <div class="preview-card"><span>Tâches</span><strong>0</strong></div>
+                <div class="preview-card"><span>Terminées</span><strong>0</strong></div>
+                <div class="preview-card"><span>Prioritaires</span><strong>0</strong></div>
+              </div>
+              <div class="preview-empty">Aucune tâche pour le moment.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps-section" id="how-it-works">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Comment ça marche ?</span>
+          <h2>Commencez simplement, avancez régulièrement.</h2>
+          <p>Task Flow vous accompagne depuis la création d'une tâche jusqu'à sa réalisation.</p>
+        </div>
+        <div class="steps-grid">
+          <article class="step-card">
+            <span class="step-number">01</span>
+            <span class="step-icon" aria-hidden="true">＋</span>
+            <h3>Ajoutez vos tâches</h3>
+            <p>Saisissez le nom, la description, la catégorie, la priorité et la date prévue.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-number">02</span>
+            <span class="step-icon" aria-hidden="true">◔</span>
+            <h3>Organisez votre travail</h3>
+            <p>Classez vos tâches et concentrez-vous sur ce qui est le plus important.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-number">03</span>
+            <span class="step-icon" aria-hidden="true">✓</span>
+            <h3>Suivez vos progrès</h3>
+            <p>Consultez votre progression, votre historique et vos tâches terminées.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="principles-section">
+      <div class="container principles-grid">
+        <div class="principles-content">
+          <span class="eyebrow">Pensé pour évoluer</span>
+          <h2>Une base simple pour une organisation durable.</h2>
+          <p>Task Flow commence comme une application statique, mais son organisation est prévue pour évoluer vers une plateforme plus complète.</p>
+        </div>
+        <div class="principles-list">
+          <div class="principle-item">
+            <span aria-hidden="true">✓</span>
+            <div>
+              <strong>Clair</strong>
+              <p>Une interface compréhensible dès la première visite.</p>
+            </div>
+          </div>
+          <div class="principle-item">
+            <span aria-hidden="true">✓</span>
+            <div>
+              <strong>Flexible</strong>
+              <p>Des tâches adaptées à différents projets et activités.</p>
+            </div>
+          </div>
+          <div class="principle-item">
+            <span aria-hidden="true">✓</span>
+            <div>
+              <strong>Progressif</strong>
+              <p>Une organisation qui évolue selon vos besoins.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container cta-card">
+        <div>
+          <span class="eyebrow">Prêt à commencer ?</span>
+          <h2>Organisez votre prochaine étape.</h2>
+          <p>Ajoutez votre première tâche et découvrez votre espace Task Flow.</p>
+        </div>
+        <a class="button button-light" href="tasks.html">Créer une tâche</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">✓</span>
+        <div>
+          <strong>Task Flow</strong>
+          <span>Organisez. Progressez. Réalisez.</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Accueil</a>
+        <a href="tasks.html">Mes tâches</a>
+        <a href="account.html">Mon espace</a>
+        <a href="settings.html">Paramètres</a>
+      </div>
+      <p>Prototype statique — Task Flow</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

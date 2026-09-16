@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6366f1">
+  <title>Mon espace — Task Flow</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html" aria-label="Task Flow, accueil">
+        <span class="brand-mark" aria-hidden="true">✓</span>
+        <span class="brand-name">Task Flow</span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="tasks.html">Mes tâches</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a class="active" href="account.html">Mon espace</a>
+        <a href="settings.html">Paramètres</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="themeButton" type="button" aria-label="Changer le thème" title="Changer le thème">◐</button>
+      </div>
+      <button class="mobile-menu-button" id="mobileMenuButton" type="button" aria-label="Ouvrir le menu" aria-controls="mainNav" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =====================================================
+         FORMULAIRE DE CRÉATION (affiché si pas encore de profil)
+         ===================================================== -->
+    <section class="settings-header" id="createProfileSection" hidden>
+      <div class="container">
+        <span class="eyebrow">Bienvenue</span>
+        <h1>Créez votre espace Task Flow</h1>
+        <p>Renseignez vos informations pour personnaliser votre expérience.</p>
+      </div>
+    </section>
+
+    <section class="settings-main" id="createProfileFormSection" hidden>
+      <div class="container settings-layout">
+        <div class="settings-card">
+          <div class="section-heading">
+            <span class="eyebrow">Nouveau profil</span>
+            <h2>Vos informations</h2>
+            <p>Ces informations restent uniquement dans votre navigateur.</p>
+          </div>
+
+          <form id="createProfileForm">
+            <div class="form-field">
+              <label for="createNameInput">Nom ou nom d'affichage</label>
+              <input id="createNameInput" name="name" type="text" placeholder="Écrire votre nom" required>
+            </div>
+
+            <div class="form-field">
+              <label for="createEmailInput">Adresse e-mail</label>
+              <input id="createEmailInput" name="email" type="email" placeholder="vous@exemple.com">
+            </div>
+
+            <div class="form-field">
+              <label for="createBioInput">Présentation</label>
+              <textarea id="createBioInput" name="bio" rows="4" placeholder="Écrire une courte présentation"></textarea>
+            </div>
+
+            <div class="form-field">
+              <label for="createPhotoInput">Photo de profil</label>
+              <label class="file-input-button" for="createPhotoInput">Choisir une photo</label>
+              <input class="visually-hidden-input" id="createPhotoInput" name="photo" type="file" accept="image/*">
+              <small class="field-help">La photo est conservée localement dans ce navigateur.</small>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="createCountryInput">Pays</label>
+                <select id="createCountryInput" name="country">
+                  <option value="">Choisir un pays</option>
+                  <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+                  <option value="Sénégal">Sénégal</option>
+                  <option value="France">France</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Belgique">Belgique</option>
+                  <option value="Autre pays">Autre pays</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="createLanguageInput">Langue</label>
+                <select id="createLanguageInput" name="language">
+                  <option value="">Choisir une langue</option>
+                  <option value="Français">Français</option>
+                  <option value="English">English</option>
+                  <option value="Español">Español</option>
+                  <option value="العربية">العربية</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="createCurrencyInput">Devise préférée</label>
+              <select id="createCurrencyInput" name="currency">
+                <option value="">Choisir une devise</option>
+                <option value="Franc CFA — XOF">Franc CFA — XOF</option>
+                <option value="Euro — EUR">Euro — EUR</option>
+                <option value="Dollar américain — USD">Dollar américain — USD</option>
+                <option value="Dollar canadien — CAD">Dollar canadien — CAD</option>
+                <option value="Livre sterling — GBP">Livre sterling — GBP</option>
+              </select>
+            </div>
+
+            <div class="form-actions">
+              <button class="button button-primary" type="submit">Créer mon profil</button>
+            </div>
+
+            <p class="form-status" id="createProfileStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <aside class="settings-preview-card">
+          <span class="eyebrow">Aperçu</span>
+          <h2>Votre profil</h2>
+          <div class="settings-photo-button" style="pointer-events:none;">
+            <img class="settings-avatar-image" id="createAvatarImage" src="" alt="Photo du profil" hidden>
+            <span class="settings-avatar" id="createAvatar">?</span>
+          </div>
+          <h3 id="createPreviewName">Aucun nom</h3>
+          <p id="createPreviewEmail">Aucun e-mail</p>
+          <p id="createPreviewBio">Aucune présentation</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         AFFICHAGE DU PROFIL (si le profil existe déjà)
+         ===================================================== -->
+    <section class="account-hero" id="viewProfileSection" hidden>
+      <div class="container account-hero-content">
+        <div class="account-identity">
+          <button class="profile-photo-button" id="profilePhotoButton" type="button" aria-label="Agrandir la photo du profil">
+            <img class="profile-avatar-image" id="profileAvatarImage" src="" alt="Photo du profil" hidden>
+            <span class="profile-avatar" id="profileAvatar" aria-label="Initiales du profil">?</span>
+          </button>
+          <div class="account-name-block">
+            <span class="eyebrow">Mon espace</span>
+            <h1 id="profileName">Aucun nom</h1>
+            <p id="profileEmail">Aucun e-mail</p>
+          </div>
+        </div>
+        <a class="button button-primary" href="settings.html">Modifier mon profil</a>
+      </div>
+    </section>
+
+    <section class="account-main" id="viewProfileDetails" hidden>
+      <div class="container account-layout">
+
+        <!-- Présentation -->
+        <div class="account-card">
+          <div class="section-heading">
+            <span class="eyebrow">Présentation</span>
+            <h2>À propos de vous</h2>
+          </div>
+          <p class="account-bio" id="profileBio">Aucune présentation.</p>
+        </div>
+
+        <!-- Préférences -->
+        <div class="account-card">
+          <div class="section-heading">
+            <span class="eyebrow">Préférences</span>
+            <h2>Informations enregistrées</h2>
+          </div>
+          <dl class="account-details">
+            <div class="account-detail-row">
+              <dt>Pays</dt>
+              <dd id="profileCountry">Non renseigné</dd>
+            </div>
+            <div class="account-detail-row">
+              <dt>Langue</dt>
+              <dd id="profileLanguage">Non renseignée</dd>
+            </div>
+            <div class="account-detail-row">
+              <dt>Devise</dt>
+              <dd id="profileCurrency">Non renseignée</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- =====================================================
+             HISTORIQUE DES TÂCHES TERMINÉES
+             ===================================================== -->
+        <div class="account-card" style="grid-column: 1 / -1;">
+          <div class="section-heading">
+            <span class="eyebrow">Activité</span>
+            <h2>Historique de vos tâches</h2>
+          </div>
+          <div class="history-list" id="accountHistoryList">
+            <p class="empty-text">Aucun historique pour le moment.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Modal photo -->
+    <div class="photo-modal" id="photoModal" hidden role="dialog" aria-modal="true" aria-labelledby="photoModalTitle">
+      <div class="photo-modal-backdrop"></div>
+      <div class="photo-modal-content">
+        <button class="photo-modal-close" id="closePhotoModalButton" type="button" aria-label="Fermer la photo">×</button>
+        <h2 id="photoModalTitle">Photo du profil</h2>
+        <img id="photoModalImage" src="" alt="Photo agrandie du profil">
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">✓</span>
+        <div>
+          <strong>Task Flow</strong>
+          <span>Organisez. Progressez. Réalisez.</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Accueil</a>
+        <a href="tasks.html">Mes tâches</a>
+        <a href="settings.html">Paramètres</a>
+      </div>
+      <p>Prototype statique — Task Flow</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

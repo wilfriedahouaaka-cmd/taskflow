@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6366f1">
+  <title>Dashboard — Task Flow</title>
+  <meta name="description" content="Suivez votre progression et consultez vos tâches avec Task Flow.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html" aria-label="Task Flow, accueil">
+        <span class="brand-mark" aria-hidden="true">✓</span>
+        <span class="brand-name">Task Flow</span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="tasks.html">Mes tâches</a>
+        <a class="active" href="dashboard.html">Dashboard</a>
+        <a href="account.html">Mon espace</a>
+        <a href="settings.html">Paramètres</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="themeButton" type="button" aria-label="Activer le thème sombre" title="Changer le thème">◐</button>
+        <a class="button button-primary button-small" href="tasks.html">Nouvelle tâche</a>
+      </div>
+      <button class="mobile-menu-button" id="mobileMenuButton" type="button" aria-label="Ouvrir le menu" aria-controls="mainNav" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="dashboard-header">
+      <div class="container dashboard-header-content">
+        <div>
+          <span class="eyebrow">Votre progression</span>
+          <h1>Dashboard Task Flow</h1>
+          <p>Consultez vos tâches enregistrées, votre progression et votre historique.</p>
+        </div>
+        <div class="dashboard-actions">
+          <a class="button button-secondary" href="tasks.html">Retour à la saisie</a>
+          <button class="button button-secondary" id="downloadTasksButton" type="button">Télécharger</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="dashboard-statistics">
+      <div class="container">
+        <div class="stat-grid">
+          <article class="stat-card">
+            <span class="stat-label">Progression globale</span>
+            <strong class="stat-value" id="globalProgress">0%</strong>
+            <div class="progress-track">
+              <span class="progress-value" id="globalProgressBar" style="width: 0%;"></span>
+            </div>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Tâches totales</span>
+            <strong class="stat-value" id="totalTasks">0</strong>
+            <small>Toutes vos tâches enregistrées</small>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Tâches terminées</span>
+            <strong class="stat-value" id="completedTasks">0</strong>
+            <small>Tâches réalisées</small>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Taux de réussite</span>
+            <strong class="stat-value" id="successRate">0%</strong>
+            <small>Selon les tâches terminées</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dashboard-main">
+      <div class="container dashboard-grid">
+        <div class="dashboard-task-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Vos tâches</span>
+              <h2>Suivi des tâches</h2>
+            </div>
+            <button class="button button-secondary button-small" id="refreshTasksButton" type="button">Actualiser</button>
+          </div>
+
+          <div class="task-filters" aria-label="Filtres des tâches">
+            <button class="filter-button active" data-filter="all" type="button">Toutes</button>
+            <button class="filter-button" data-filter="work" type="button">Affaires</button>
+            <button class="filter-button" data-filter="completed" type="button">Terminées</button>
+            <button class="filter-button" data-filter="high" type="button">Prioritaires</button>
+          </div>
+
+          <div class="dashboard-task-list" id="dashboardTaskList">
+            <div class="empty-state" id="dashboardEmptyState">
+              <span class="empty-state-icon" aria-hidden="true">◇</span>
+              <h3>Aucune tâche enregistrée</h3>
+              <p>Ajoutez une tâche depuis la page de saisie pour la voir apparaître ici.</p>
+              <a class="button button-primary button-small" href="tasks.html">Ajouter une tâche</a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="dashboard-side-panel">
+          <div class="side-card">
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">Important</span>
+                <h2>Tâches prioritaires</h2>
+              </div>
+            </div>
+            <div class="priority-list" id="priorityTaskList">
+              <p class="empty-text">Aucune tâche prioritaire.</p>
+            </div>
+          </div>
+
+          <div class="side-card">
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">Activité</span>
+                <h2>Historique</h2>
+              </div>
+            </div>
+            <div class="history-list" id="historyList">
+              <p class="empty-text">Aucun historique disponible.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">✓</span>
+        <div>
+          <strong>Task Flow</strong>
+          <span>Organisez. Progressez. Réalisez.</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Accueil</a>
+        <a href="tasks.html">Mes tâches</a>
+        <a href="account.html">Mon espace</a>
+        <a href="settings.html">Paramètres</a>
+      </div>
+      <p>Prototype statique — Task Flow</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

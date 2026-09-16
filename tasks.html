@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6366f1">
+  <title>Mes tâches — Task Flow</title>
+  <meta name="description" content="Saisissez, vérifiez et enregistrez vos tâches avec Task Flow.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="index.html" aria-label="Task Flow, page d'accueil">
+        <span class="brand-mark" aria-hidden="true">✓</span>
+        <span class="brand-name">Task Flow</span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a class="active" href="tasks.html">Mes tâches</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="account.html">Mon espace</a>
+        <a href="settings.html">Paramètres</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="themeButton" type="button" aria-label="Activer le thème sombre" title="Changer le thème">◐</button>
+      </div>
+      <button class="mobile-menu-button" id="mobileMenuButton" type="button" aria-label="Ouvrir le menu" aria-controls="mainNav" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <span class="eyebrow">Votre espace de saisie</span>
+        <h1>Ajoutez et vérifiez vos tâches.</h1>
+        <p>Remplissez le formulaire, ajoutez vos tâches à la liste temporaire, puis sélectionnez celles que vous souhaitez enregistrer.</p>
+      </div>
+    </section>
+
+    <section class="task-workspace">
+      <div class="container task-layout">
+        <div class="task-form-card">
+          <div class="section-heading">
+            <span class="eyebrow">Nouvelle tâche</span>
+            <h2>Que devez-vous faire ?</h2>
+            <p>Les champs doivent être remplis avant l'ajout à la liste temporaire.</p>
+          </div>
+
+          <form id="taskForm">
+            <div class="form-field">
+              <label for="taskTitle">Nom de la tâche</label>
+              <input id="taskTitle" name="title" type="text" placeholder="Écrire le nom de la tâche" autocomplete="off" required>
+            </div>
+
+            <div class="form-field">
+              <label for="taskDescription">Description ou précision</label>
+              <textarea id="taskDescription" name="description" rows="4" placeholder="Ajouter une précision si nécessaire"></textarea>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="taskCategory">Catégorie</label>
+                <select id="taskCategory" name="category" required>
+                  <option value="" selected disabled>Choisir une catégorie</option>
+                  <option value="work">Affaires</option>
+                  <option value="personal">Personnel</option>
+                  <option value="study">Études</option>
+                  <option value="other">Autre</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="taskPriority">Priorité</label>
+                <select id="taskPriority" name="priority" required>
+                  <option value="" selected disabled>Choisir une priorité</option>
+                  <option value="normal">Normale</option>
+                  <option value="high">Importante</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="taskDuration">Durée</label>
+                <input id="taskDuration" name="duration" type="number" min="1" placeholder="Ex. 2" autocomplete="off">
+              </div>
+              <div class="form-field">
+                <label for="taskPeriod">Période</label>
+                <select id="taskPeriod" name="period">
+                  <option value="" selected disabled>Choisir une période</option>
+                  <option value="day">Jour(s)</option>
+                  <option value="week">Semaine(s)</option>
+                  <option value="month">Mois</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- NOUVEAU : Quand ? -->
+            <div class="form-field">
+              <label for="taskWhen">Quand ?</label>
+              <select id="taskWhen" name="when" required>
+                <option value="" selected disabled>Choisir une option</option>
+                <option value="today">Aujourd'hui</option>
+                <option value="tomorrow">Demain</option>
+                <option value="after">Après-demain</option>
+                <option value="week">Dans une semaine</option>
+                <option value="custom">Date personnalisée</option>
+              </select>
+            </div>
+
+            <!-- Date personnalisée (cachée par défaut) -->
+            <div class="form-field" id="customDateField" hidden>
+              <label for="taskDate">Choisir la date</label>
+              <input id="taskDate" name="date" type="date">
+            </div>
+
+            <!-- Moment de la journée -->
+            <div class="form-field">
+              <label for="taskMoment">Moment de la journée</label>
+              <select id="taskMoment" name="moment">
+                <option value="">— Optionnel —</option>
+                <option value="matin">Matin</option>
+                <option value="apres-midi">Après-midi</option>
+                <option value="soir">Soir</option>
+              </select>
+            </div>
+
+            <div class="form-actions">
+              <button class="button button-primary" type="submit">Ajouter à la liste</button>
+              <button class="button button-secondary" id="clearTaskFormButton" type="button">Effacer</button>
+            </div>
+
+            <p class="form-status" id="taskFormStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <aside class="task-list-card">
+          <div class="section-heading">
+            <span class="eyebrow">Vérification</span>
+            <h2>Liste des tâches</h2>
+            <p>Vérifiez chaque tâche, cochez celles à conserver, puis enregistrez la sélection.</p>
+          </div>
+
+          <div class="task-list" id="taskList">
+            <div class="empty-state" id="taskEmptyState">
+              <span class="empty-state-icon" aria-hidden="true">◇</span>
+              <h3>Aucune tâche ajoutée</h3>
+              <p>Remplissez le formulaire pour ajouter votre première tâche.</p>
+            </div>
+          </div>
+
+          <button class="button button-primary task-save-button" id="saveTasksButton" type="button">
+            Enregistrer la liste sélectionnée
+          </button>
+
+          <p class="form-status" id="saveTasksStatus" role="status" aria-live="polite"></p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">✓</span>
+        <div>
+          <strong>Task Flow</strong>
+          <span>Organisez. Progressez. Réalisez.</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Accueil</a>
+        <a href="tasks.html">Mes tâches</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="settings.html">Paramètres</a>
+      </div>
+      <p>Prototype statique — Task Flow</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
